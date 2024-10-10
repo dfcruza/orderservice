@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "order_req")
-public class Order {
+public class Order implements IEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
