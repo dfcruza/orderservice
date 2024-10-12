@@ -4,6 +4,7 @@ import com.sumtechlabs.orderservice.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,18 +15,23 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     public List<Order> findAll() {
-        List<Order> orders = orderRepository.findAll();
-        return orders;
+        return orderRepository.findAll();
     }
 
-    public Order findOrderById(Long id) {
+    public Order findOrderById(Long pId) {
         Order orderSearched = new Order();//Crear orden buscada
-        Optional<Order> OrderFound = orderRepository.findById(id); //Busco la orden en el repository
+        Optional<Order> OrderFound = orderRepository.findById(pId); //Busco la orden en el repository
         if (OrderFound.isPresent()) {
             orderSearched.setId(OrderFound.get().getId());//Set
             orderSearched.setAccount(OrderFound.get().getAccount());
             return orderSearched;
         }
         return null;
+    }
+
+    public List<Order> findByAccount(String pAccount) {
+        List<Order> ordersByAccount = new ArrayList<>();
+
+        return ordersByAccount;
     }
 }
