@@ -29,16 +29,18 @@ public class OrderController {
 		//1 - Create a Collection of Orders
 		//2 - Retrieve Order Entity info by Id number 100 .
 		//3 - Filter Order by Client.
-		//4 - Validate 
-		order.setAccount("David");
-		order.setId(100);
-
-		return new ResponseEntity<>(order, HttpStatus.OK);
+		//4 - Validate
+		order = orderService.findOrderById(11L);
+		//order.setAccount("David");
+		//order.setId(100);
+		if (order != null) {
+			return new ResponseEntity<>(order, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(order, HttpStatus.NOT_FOUND);
 	}
 
 	@GetMapping(path = "/api/orderservice/orders",  produces = { MediaType.APPLICATION_JSON_VALUE})
 	public List<Order> getAllOrders() {
-
 		return orderService.findAll();
 	}
 
