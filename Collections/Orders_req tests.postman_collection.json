@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "b9637737-4ba6-43e8-88c8-2eb1a9c90811",
+		"name": "Orders_req tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "14953653"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/orderservice/order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/orderservice/order"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/orderservice/orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/orderservice/orders"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/orderservice/order/100",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/orderservice/order/{{OrderId}}"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/orderservice/order/100 Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/orderservice/orders/Toyota"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "OrderId",
+			"value": "100",
+			"type": "default"
+		}
+	]
+}

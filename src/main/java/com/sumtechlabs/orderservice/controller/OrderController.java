@@ -39,8 +39,12 @@ public class OrderController {
 	}
 
 	@GetMapping(path = "/api/orderservice/orders",  produces = { MediaType.APPLICATION_JSON_VALUE})
-	public List<Order> getAllOrders() {
-		return orderService.findAll();
+	public ResponseEntity<List<Order>> getAllOrders() {
+		List<Order> orders =  orderService.findAll();
+		if (orders != null&& !orders.isEmpty()) {
+			return new ResponseEntity<>(orders, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(orders, HttpStatus.NO_CONTENT);
 	}
 
 
@@ -54,4 +58,12 @@ public class OrderController {
 	}
 
 
+	@RequestMapping(path = "/api/orderservice/orders/{pAccount}", method= RequestMethod.GET)
+	public ResponseEntity<List<Order>> getOrdersByAccount(@PathVariable String pAccount) {
+		List<Order> ordersByAccount = orderService.findByAccount(pAccount);
+		if (!ordersByAccount.isEmpty()&&ordersByAccount.get(0).getAccount().contains(pAccount)) {
+			return new ResponseEntity<>(ordersByAccount, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(ordersByAccount, HttpStatus.NO_CONTENT);
+	}
 }

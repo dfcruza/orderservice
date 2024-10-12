@@ -31,7 +31,12 @@ public class OrderService {
 
     public List<Order> findByAccount(String pAccount) {
         List<Order> ordersByAccount = new ArrayList<>();
-
+        List<Order> allOrders = findAll();
+        for (Order order : allOrders) {
+            if (order.getAccount().equals(pAccount)) {
+                ordersByAccount.add(order);
+            }
+        }
         return ordersByAccount;
     }
 }
